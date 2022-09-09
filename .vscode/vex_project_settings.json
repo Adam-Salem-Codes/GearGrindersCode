@@ -1,0 +1,18 @@
+{
+	"extension": {
+		"version": "0.1.0",
+		"json": 1
+	},
+	"project": {
+		"name": "GearGrindersCode",
+		"description": "Gear Grinders written in C++",
+		"creationDate": "Wed Sep 07 2022",
+		"platform": "V5",
+		"language": "cpp",
+		"slot": 1,
+		"sdkVersion": "V5_20220726_10_00_00",
+		"cpp": {
+			"includePath": []
+		}
+	}
+}
