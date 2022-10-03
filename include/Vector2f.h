@@ -1,8 +1,8 @@
 
   typedef struct {
-    int x;
-    int y;
-    void setX(int newX){x = newX;}
-    void setY(int newY){y = newY;}
+    float x;
+    float y;
+    void setX(float newX){x = newX;}
+    void setY(float newY){y = newY;}
   }
   Vector2f;

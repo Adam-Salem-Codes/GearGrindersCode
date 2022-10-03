@@ -19,6 +19,8 @@
 #include <vector>
 #include "math.h"
 #include "Vector2f.h"
+#include <AdvancedMovement.h>
+
 using namespace vex;
 
 
@@ -28,18 +30,19 @@ button driverControlB; // Making the button.
 button autonB;
 button competitionB;
 buttonManager bm;
-
 // Struct square, x, y, width, height.
 square drivercontrolD = { (480 - 121) / 5 - 50, 240 / 2 - 35, vexDisplayStringWidthGet("Enable Driver control."), vexDisplayStringHeightGet("Enable Driver control.")*4 };
 square autonD = { (480 - 121) / 5 - 50, 10, vexDisplayStringWidthGet("Enable Autonomous.") + 15, vexDisplayStringHeightGet("Enable Autonomous.")*4 };
 square competitionD = { (480 - 121) / 5 - 50, 240 / 2 + 45, vexDisplayStringWidthGet("Enable Competition Mode.") + 15, vexDisplayStringHeightGet("Enable Competition Mode.")*4 };
 bool renderGif = true;
-
+AdvancedMovement robotMovement;
+Vector2f robotPosition;
+short RobotRotation;
 
 
 void turn(int x1, int y1, int x2, int y2)
 {
-  Drivetrain.turnFor(atan2(y2 - y1, x2 - x1) * (180 / 3.14159265359), rotationUnits::deg);
+  robotMovement.turnPID(atan2(y2 - y1, x2 - x1) * (180 / 3.14159265359));
   Brain.Screen.newLine();
   Brain.Screen.print((atan2(y2 - y1, x2 - x1) * (180 / 3.14159265359)));
 }
@@ -47,7 +50,6 @@ void turn(int x1, int y1, int x2, int y2)
 void drive(int amount)
 {
   Drivetrain.driveFor(fwd, amount, distanceUnits::in);
-
 }
 void enableController()
 {
@@ -201,7 +203,6 @@ int main() {
   competitionB.setup(competitionD, "Enable Competition Mode.", competitionEnable);
   SDcardInstalled();
   imuInstalled(); 
-  
 
   // Set up callbacks for autonomous and driver control periods.
 
