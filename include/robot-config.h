@@ -7,6 +7,9 @@ extern motor_group RightDriveSmart;
 extern drivetrain Drivetrain;
 extern bool RemoteControlCodeEnabled;
 extern inertial Inertial;
+extern encoder EncoderA;
+extern motor FlyWheel;
+
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
  *
